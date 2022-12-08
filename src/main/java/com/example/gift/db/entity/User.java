@@ -1,9 +1,9 @@
 package com.example.gift.db.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
 import org.springframework.data.annotation.Id;
 import org.springframework.util.CollectionUtils;
 
@@ -62,7 +62,7 @@ public class User {
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
     @JsonIgnore
-    private List<WishList> wishLists;
+    private List<Wishlist> wishLists;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Charity> charities;
