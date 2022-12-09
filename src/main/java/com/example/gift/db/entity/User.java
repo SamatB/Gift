@@ -1,6 +1,6 @@
 package com.example.gift.db.entity;
 
-import com.example.gift.db.enums.Role;
+import com.example.gift.enums.Role;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
