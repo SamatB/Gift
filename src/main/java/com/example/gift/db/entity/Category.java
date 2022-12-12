@@ -1,7 +1,6 @@
 package com.example.gift.db.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,4 +13,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Category {
+
+    @Id
+    @GeneratedValue(generator = "category_gen", strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "category_gen", sequenceName = "category_seq", allocationSize = 1)
+    private Long id;
+
 }
