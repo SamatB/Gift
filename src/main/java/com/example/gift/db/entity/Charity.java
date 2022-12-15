@@ -1,5 +1,6 @@
 package com.example.gift.db.entity;
 
+import com.example.gift.enums.CharityStatus;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
