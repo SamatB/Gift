@@ -11,6 +11,8 @@ import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "charity")
@@ -58,4 +60,17 @@ public class Charity {
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinColumn(name = "subcategory_id")
     private Subcategory subcategory;
+
+    @Enumerated(EnumType.STRING)
+    private CharityStatus charityStatus;
+
+    @OneToMany(mappedBy = "charity",cascade = CascadeType.ALL)
+    private List<Notification> notifications = new ArrayList<>();
+
+    @OneToMany(mappedBy = "charity", cascade = CascadeType.ALL)
+    private List <Complaints> complaints;
+
+    public void addNotification(Notification notification){
+        notifications.add(notification);
+    }
 }
