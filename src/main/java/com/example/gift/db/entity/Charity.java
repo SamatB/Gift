@@ -1,11 +1,16 @@
 package com.example.gift.db.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "charity")
@@ -39,4 +44,18 @@ public class Charity {
     @JsonIgnore
     private User user;
 
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    @CreatedDate
+    @JsonFormat(pattern = "yyyy.MM.dd")
+    private LocalDate createdAt;
+
+    @OneToOne(mappedBy = "charity", cascade = CascadeType.ALL)
+    private Booking booking;
+
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinColumn(name = "subcategory_id")
+    private Subcategory subcategory;
 }
