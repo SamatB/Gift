@@ -14,4 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Charity {
+
+
+
 }
