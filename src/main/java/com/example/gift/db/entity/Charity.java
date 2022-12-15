@@ -1,5 +1,6 @@
 package com.example.gift.db.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,5 +23,20 @@ public class Charity {
     private String giftName;
 
     private boolean isBlocked;
+
+    @Enumerated(EnumType.STRING)
+    private Condition condition;
+
+    @Size(max = 10000)
+    private String description;
+
+    private String image;
+
+    private Boolean isBlock;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    private User user;
 
 }
